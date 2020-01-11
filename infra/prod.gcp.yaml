@@ -1,0 +1,9 @@
+---
+chartVersion: "9.0.0-stable"
+
+serviceName: "timestables"
+serviceType: "service"
+
+pullPolicy: "Always"
+
+replicas: 3

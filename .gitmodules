@@ -1,0 +1,4 @@
+[submodule "protos"]
+	path = modules/protos
+	url = git@gitlab.com:LUSHDigital/soa/models/rpc.git
+	branch = master

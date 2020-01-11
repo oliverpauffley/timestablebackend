@@ -1,0 +1,21 @@
+version: "2"
+services:
+  app:
+    image: lushdigital/alpine-golang:latest
+    command: go run -mod=vendor service/main.go
+    working_dir: /service
+    restart: "no"
+    volumes:
+    - $PWD:/service:ro
+    env_file: infra/dev.env
+    depends_on:
+    - redis
+  redis:
+    image: redis:4
+    restart: always
+    logging:
+      driver: none
+    volumes:
+    - ${PWD}/data/redis/dev:/data
+    ports:
+    - 6379:6379
