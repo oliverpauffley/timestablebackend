@@ -9,7 +9,7 @@ type LeaderboardController struct {
 type User struct {
 	Id    string
 	Rank  int64
-	Score float64
+	Score float32
 }
 
 type Leaderboard struct {

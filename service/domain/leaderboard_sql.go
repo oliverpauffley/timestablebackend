@@ -13,7 +13,7 @@ func (lc *LeaderboardController) GetAll() []User {
 	var users []User
 	for rank, data := range zRangeWithScores.Val() {
 		member := data.Member.(string)
-		user := User{Rank: int64(rank + 1), Id: member, Score: data.Score}
+		user := User{Rank: int64(rank + 1), Id: member, Score: float32(data.Score)}
 
 		users = append(users, user)
 	}

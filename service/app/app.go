@@ -52,6 +52,8 @@ func (h *Handlers) Results(ctx context.Context, req *proto.ResultsRequest) (*pro
 func (h *Handlers) Leaderboard(ctx context.Context, req *proto.LeaderboardRequest) (*proto.LeaderboardResponse, error) {
 	controller := domain.LeaderboardController{h}
 
-	controller.Get(ctx)
+	leaderboard := controller.Get(ctx)
+
+	return LeaderboardToProtos(leaderboard), nil
 }
 

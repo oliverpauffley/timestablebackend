@@ -33,3 +33,22 @@ func ResultsToDomain(message *proto.ResultsRequest) domain.Result {
 	}
 	return result
 }
+
+func LeaderboardToProtos(leaderboard domain.Leaderboard) *proto.LeaderboardResponse {
+	users := make([]*proto.LeaderboardResponse_User, len(leaderboard.Users))
+
+	for _, user := range leaderboard.Users {
+		messageUser := &proto.LeaderboardResponse_User{
+			Id:    user.Id,
+			Rank:  user.Rank,
+			Score: user.Score,
+		}
+
+		users = append(users, messageUser)
+	}
+
+	return &proto.LeaderboardResponse{
+		Count: leaderboard.Count,
+		Users: users,
+	}
+}
